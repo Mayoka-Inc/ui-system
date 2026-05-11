@@ -14,7 +14,11 @@ export class UIManager {
     }
 
     initCrosshair() {
-        if (document.getElementById('crosshair')) return;
+        const existing = document.getElementById('crosshair');
+        if (existing) {
+            this.crosshair = existing;
+            return;
+        }
         this.crosshair = document.createElement('div');
         this.crosshair.id = 'crosshair';
         const inner = document.createElement('div');
@@ -71,8 +75,9 @@ export class UIManager {
     }
 
     initLeaderboard() {
-        if (document.getElementById('leaderboard')) {
-            this.leaderboardElement = document.getElementById('leaderboard');
+        const existing = document.getElementById('leaderboard');
+        if (existing) {
+            this.leaderboardElement = existing;
             return;
         }
         this.leaderboardElement = document.createElement('div');
