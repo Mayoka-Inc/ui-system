@@ -1,0 +1,90 @@
+/* Base UI Styles */
+#ui {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    pointer-events: none;
+    z-index: 100;
+    transition: all 0.1s ease;
+}
+
+#score, #speed {
+    font-size: 24px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+}
+
+/* Glitch Effect */
+.glitch-active {
+    animation: glitch-anim 0.2s infinite;
+}
+
+@keyframes glitch-anim {
+    0% { transform: translate(0); filter: hue-rotate(0deg); }
+    25% { transform: translate(-5px, 2px); filter: hue-rotate(90deg); }
+    50% { transform: translate(5px, -2px); filter: hue-rotate(180deg); }
+    75% { transform: translate(-2px, -5px); filter: hue-rotate(270deg); }
+    100% { transform: translate(0); filter: hue-rotate(360deg); }
+}
+
+/* Dynamic Crosshair */
+#crosshair {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #0ff;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, border-color 0.2s;
+    z-index: 1000;
+    box-shadow: 0 0 10px #0ff;
+}
+
+.crosshair-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: #0ff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#crosshair.locked {
+    width: 30px;
+    height: 30px;
+    border-color: #f0f;
+    border-width: 3px;
+    box-shadow: 0 0 15px #f0f;
+}
+
+#crosshair.locked .crosshair-inner {
+    background: #f0f;
+}
+
+/* Leaderboard */
+#leaderboard {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+#leaderboard h3 {
+    font-size: 18px;
+    color: #0ff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #0ff;
+}
+
+.leaderboard-entry {
+    font-size: 16px;
+    color: #f0f;
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px #f0f;
+}
