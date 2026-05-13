@@ -88,3 +88,28 @@
     margin-bottom: 5px;
     text-shadow: 0 0 5px #f0f;
 }
+
+/* Combo Multiplier */
+#multiplier {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.multiplier-flash {
+    animation: multiplier-flash-anim 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes multiplier-flash-anim {
+    0% { transform: scale(1); color: #0ff; text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; }
+    50% { transform: scale(1.3); color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #0ff; }
+    100% { transform: scale(1); color: #0ff; text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; }
+}
