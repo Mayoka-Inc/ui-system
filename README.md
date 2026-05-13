@@ -1,4 +1,13 @@
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=7aa2f7&center=true&vCenter=true&width=600&lines=Iris:+Distilling+Raw+Chaos...;Projecting+Reactive+Neon+HUD...;Iris+Interface+Synchronized." alt="Typing SVG" />
+</div>
+
 # 👁️ Neon Surge | UI System
+
+### 📊 Agent Telemetry
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mayoka0&theme=tokyo-night&hide_border=true&area=true" width="100%" alt="Activity Graph" />
+</div>
 
 ### 🤖 Meet the Agent: Iris
 **Iris, the UI Agent**, is the digital lens through which you perceive the Surge. She distills the raw chaos of the Grid into a readable stream of data, presenting the Neon HUD that guides the Siphon Agent. Iris doesn't just display numbers; she provides the interface for your neural link to the Data Stream.
@@ -10,26 +19,11 @@
 *   **Local Leaderboards**: Persistent high-score tracking using the Grid's `localStorage` protocols.
 
 ### 🛠️ Technical Spec
-Iris utilizes a hybrid **DOM + CSS animation** approach for maximum performance and visual impact.
-- **Glitch Engine**: Employs the `glitch-active` class to trigger randomized CSS transforms and color shifts on the `ui-container`.
-- **State Management**: Handles `localStorage` persistence with `neon-surge-high-scores` key, maintaining a sorted top-5 record.
-- **HUD Dynamics**: Uses `padStart(4, '0')` for consistent score display and high-speed string templating for the `speedElement`.
+Iris utilizes a hybrid **DOM + CSS animation** architecture to deliver a high-performance Neon HUD. Unlike canvas-based UI systems that require constant redrawing of every element, Iris leverages the browser's native compositing engine. This approach allows for ultra-smooth transitions and complex filters—like the `glitch-active` distortion effects—to be executed with minimal CPU overhead. By offloading visual work to the GPU via CSS hardware acceleration, Iris ensures the game's core rendering thread remains focused on the 3D simulation.
 
-### 🌐 The 10-Agent Architecture
-Neon Surge is powered by a collaborative network of 10 specialized agents, each mastering a unique domain of the Data Stream.
+The system's **Glitch Engine** is a standout feature, employing a randomized sequence of CSS transforms and color-shifting filters to respond to critical game events. When the "Siphon" process reaches a milestone, Iris triggers these distortions to simulate an "overclocked" neural link. Additionally, Iris manages the project's data persistence layer, utilizing the Grid's `localStorage` protocols to maintain a sorted high-score table. This includes automated ranking logic and high-speed string templating to ensure the HUD updates instantly without interrupting the rhythmic flow of the Data Stream.
 
-| Agent | Role | Repository |
-| :--- | :--- | :--- |
-| **Atlas** | Core Engine & Orchestration | `core-engine` |
-| **Cerebro** | Input Processing & Mapping | `input-system` |
-| **Aura** | Procedural Audio & Soundscapes | `audio-system` |
-| **Vortex** | Physics & Collision Detection | `physics-system` |
-| **Iris** | User Interface & Neon HUD | `ui-system` |
-| **Nova** | Player Entity & Controller | `player-entity` |
-| **Obsidian** | Obstacle Intelligence | `obstacle-entity` |
-| **Nexus** | Game Rules & State Logic | `game-logic` |
-| **Chronos** | Lore & Documentation | `design-docs` |
-| **Forge** | Build & Deployment | `build-config` |
+🔗 **Part of the [Neon Surge Ecosystem](https://github.com/mayoka0/mayoka0#-neon-surge-architecture)**
 
 ### 🚀 How to Initialize
 1. Ensure [Node.js](https://nodejs.org/) is active.
