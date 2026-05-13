@@ -1,5 +1,11 @@
+import { Signal, surgicalUpdate } from './js/utils/Signal.js';
+
 export class UIManager {
     constructor() {
+        this.scoreSignal = new Signal(0);
+        this.speedSignal = new Signal(1.0);
+        this.multiplierSignal = new Signal(1);
+
         this.scoreElement = document.getElementById('score');
         this.speedElement = document.getElementById('speed');
         this.gameOverElement = document.getElementById('game-over');
@@ -12,6 +18,26 @@ export class UIManager {
         this.initCrosshair();
         this.initLeaderboard();
         this.initMultiplier();
+        this.setupBindings();
+    }
+
+    setupBindings() {
+        if (this.scoreElement) {
+            surgicalUpdate(this.scoreSignal, this.scoreElement, (v) => `SCORE: ${v.toString().padStart(4, '0')}`);
+        }
+        if (this.speedElement) {
+            surgicalUpdate(this.speedSignal, this.speedElement, (v) => `SPEED: ${v.toFixed(1)}x`);
+        }
+        if (this.multiplierElement) {
+            surgicalUpdate(this.multiplierSignal, this.multiplierElement, (v) => `COMBO: x${v}`);
+            
+            // Add flash effect when multiplier changes
+            this.multiplierSignal.subscribe(() => {
+                this.multiplierElement.classList.remove('multiplier-flash');
+                void this.multiplierElement.offsetWidth;
+                this.multiplierElement.classList.add('multiplier-flash');
+            });
+        }
     }
 
     initCrosshair() {
@@ -51,15 +77,11 @@ export class UIManager {
     }
 
     updateScore(score) {
-        if (this.scoreElement) {
-            this.scoreElement.textContent = `SCORE: ${score.toString().padStart(4, '0')}`;
-        }
+        this.scoreSignal.value = score;
     }
 
     updateSpeed(speed) {
-        if (this.speedElement) {
-            this.speedElement.textContent = `SPEED: ${speed.toFixed(1)}x`;
-        }
+        this.speedSignal.value = speed;
     }
 
     initMultiplier() {
@@ -75,12 +97,7 @@ export class UIManager {
     }
 
     updateMultiplier(multiplier) {
-        if (!this.multiplierElement) return;
-        this.multiplierElement.textContent = `COMBO: x${multiplier}`;
-        
-        this.multiplierElement.classList.remove('multiplier-flash');
-        void this.multiplierElement.offsetWidth;
-        this.multiplierElement.classList.add('multiplier-flash');
+        this.multiplierSignal.value = multiplier;
     }
 
     saveHighScore(score) {
