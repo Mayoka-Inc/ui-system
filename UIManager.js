@@ -1,4 +1,4 @@
-import { Signal, surgicalUpdate } from './js/utils/Signal.js';
+import { Signal, surgicalUpdate, batch } from './js/utils/Signal.js';
 
 export class UIManager {
     constructor() {
@@ -74,6 +74,18 @@ export class UIManager {
                 this.uiContainer.classList.remove('glitch-active');
             }, 500);
         }
+    }
+
+    /**
+     * Batches multiple UI updates into a single frame.
+     * @param {Object} updates - Object containing values to update
+     */
+    batchUpdate(updates) {
+        batch(() => {
+            if (updates.score !== undefined) this.scoreSignal.value = updates.score;
+            if (updates.speed !== undefined) this.speedSignal.value = updates.speed;
+            if (updates.multiplier !== undefined) this.multiplierSignal.value = updates.multiplier;
+        });
     }
 
     updateScore(score) {

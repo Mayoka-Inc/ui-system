@@ -1,6 +1,28 @@
 /**
  * Minimal Signal-based reactivity system for fine-grained DOM updates.
  */
+let isBatching = false;
+const pendingSignals = new Set();
+
+/**
+ * Batches multiple signal updates into a single animation frame.
+ */
+export function batch(fn) {
+    isBatching = true;
+    try {
+        fn();
+    } finally {
+        isBatching = false;
+        if (pendingSignals.size > 0) {
+            requestAnimationFrame(() => {
+                const signals = Array.from(pendingSignals);
+                pendingSignals.clear();
+                signals.forEach(s => s.notify());
+            });
+        }
+    }
+}
+
 export class Signal {
     constructor(value) {
         this._value = value;
@@ -14,7 +36,11 @@ export class Signal {
     set value(newValue) {
         if (this._value !== newValue) {
             this._value = newValue;
-            this.notify();
+            if (isBatching) {
+                pendingSignals.add(this);
+            } else {
+                this.notify();
+            }
         }
     }
 

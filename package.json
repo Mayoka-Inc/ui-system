@@ -1,0 +1,25 @@
+{
+  "name": "ui-system",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">   <img src=\"https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=7aa2f7&center=true&vCenter=true&width=600&lines=Iris:+Distilling+Raw+Chaos...;Projecting+Reactive+Neon+HUD...;Iris+Interface+Synchronized.\" alt=\"Typing SVG\" /> </div>",
+  "main": "UIManager.js",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayoka0/ui-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/mayoka0/ui-system/issues"
+  },
+  "homepage": "https://github.com/mayoka0/ui-system#readme",
+  "devDependencies": {
+    "jsdom": "^29.1.1",
+    "vitest": "^4.1.6"
+  }
+}
